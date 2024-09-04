@@ -1,0 +1,33 @@
+{
+    "name": "nuxtifyts/nuxtify-pages",
+    "description": "Nuxtify Beyond package to add CMS support",
+    "type": "library",
+    "require": {
+        "php": "^8.3",
+        "filament/filament": "^3.2",
+        "spatie/laravel-translatable": "^6.8",
+        "spatie/laravel-sluggable": "^3.6",
+        "filament/spatie-laravel-translatable-plugin": "^3.2",
+        "spatie/laravel-data": "^4.8"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Nuxtifyts\\NuxtifyPages\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fa-BRAIK",
+            "email": "faroukbraik17@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nuxtifyts\\NuxtifyPages\\NuxtifyPagesServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable"
+}
