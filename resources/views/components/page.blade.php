@@ -4,22 +4,22 @@
 @endphp
 
 @section(
-    config('nuxtify-pages.default_layout.section-keys.meta.title', 'title'),
+    config('nuxtify-pages.layout.section-keys.meta.title', 'title'),
     $page->metadata?->title
 )
 
 @section(
-    config('nuxtify-pages.default_layout.section-keys.meta.description', 'description'),
+    config('nuxtify-pages.layout.section-keys.meta.description', 'description'),
     $page->metadata?->description
 )
 
 @section(
-    config('nuxtify-pages.default_layout.section-keys.meta.keywords', 'keywords'),
+    config('nuxtify-pages.layout.section-keys.meta.keywords', 'keywords'),
     implode(', ', $page->metadata?->keywords ?? [])
 )
 
 @section(
-    config('nuxtify-pages.default_layout.section-keys.meta.author', 'author'),
+    config('nuxtify-pages.layout.section-keys.meta.author', 'author'),
     $page->metadata?->author
 )
 

@@ -7,7 +7,6 @@ use Nuxtifyts\NuxtifyPages\Filament\Resources\PageResource\Pages;
 use Filament\Resources\Concerns\Translatable;
 use Nuxtifyts\NuxtifyPages\Enums\PageStatus;
 use Nuxtifyts\NuxtifyPages\Enums\PageVisibility;
-use Nuxtifyts\NuxtifyPages\Models\Layout;
 use Nuxtifyts\NuxtifyPages\Models\Page;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -22,8 +21,6 @@ class PageResource extends Resource
     use Translatable;
 
     protected static ?string $model = Page::class;
-
-    protected static ?string $layoutModel = Layout::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-window';
 
@@ -52,13 +49,6 @@ class PageResource extends Resource
                                         ->nullable()
                                         ->label(__('nuxtify-pages::nuxtify-pages.models.page.fields.description'))
                                         ->columnSpanFull(),
-                                    Forms\Components\Select::make('layout_id')
-                                        ->relationship('layout', 'code')
-                                        ->hidden(static fn (): bool => (
-                                            config('nuxtify-pages.custom_layouts.enabled', false)
-                                            && !(static::$layoutModel)::count())
-                                        )
-                                        ->label(__('nuxtify-pages::nuxtify-pages.models.page.fields.layout_id')),
                                 ]),
                             Forms\Components\Section::make()
                                 ->schema([
@@ -100,12 +90,12 @@ class PageResource extends Resource
                     ])
                     ->collapsed(),
 
-                Forms\Components\Section::make(__('nuxtify-pages::nuxtify-pages.models.page.sections.tags'))
+                Forms\Components\Section::make(__('nuxtify-pages::nuxtify-pages.models.page.sections.tags_and_categories'))
                     ->schema([
                         Forms\Components\Select::make('tags')
+                            ->label(__('nuxtify-pages::nuxtify-pages.models.page.fields.tags'))
                             ->relationship('tags', 'name')
                             ->multiple()
-                            ->hiddenLabel()
                             ->createOptionForm([
                                 Forms\Components\TextInput::make('name')
                                     ->required()
@@ -113,6 +103,11 @@ class PageResource extends Resource
                                     ->unique()
                                     ->label(__('nuxtify-pages::nuxtify-pages.models.tag.fields.name'))
                             ]),
+
+                        Forms\Components\Select::make('categories')
+                            ->label(__('nuxtify-pages::nuxtify-pages.models.page.fields.categories'))
+                            ->relationship('categories', 'name')
+                            ->multiple(),
                     ])
                     ->collapsed(),
 

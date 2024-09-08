@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
  * @property ?CarbonInterface $created_at
  * @property ?CarbonInterface $updated_at
  * @property-read Collection $pages
- * @property-read Collection $layouts
  * @property-read Collection $taggables
  */
 class Tag extends NuxtifyModel
@@ -31,10 +30,5 @@ class Tag extends NuxtifyModel
     public function pages(): MorphToMany
     {
         return $this->morphedByMany(Page::class, 'taggable');
-    }
-
-    public function layouts(): MorphToMany
-    {
-        return $this->morphedByMany(Layout::class, 'taggable');
     }
 }

@@ -18,7 +18,6 @@ class NuxtifyPagesPlugin implements Plugin
     {
         $panel
             ->resources([
-                Resources\LayoutResource::class,
                 Resources\PageResource::class,
                 Resources\TagResource::class,
                 Resources\CategoryResource::class

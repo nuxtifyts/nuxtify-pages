@@ -19,8 +19,6 @@ use Nuxtifyts\NuxtifyPages\Enums\CategoryRelation;
  */
 class RelatedCategory extends NuxtifyModel
 {
-    protected $table = 'related_categories';
-
     public $timestamps = false;
 
     protected $fillable = [
@@ -34,6 +32,11 @@ class RelatedCategory extends NuxtifyModel
         return [
             'relation' => CategoryRelation::class
         ];
+    }
+
+    public function getBaseTable(): ?string
+    {
+        return 'related_categories';
     }
 
     public function category(): BelongsTo

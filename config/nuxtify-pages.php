@@ -3,17 +3,9 @@
 return [
     'locales' => ['en'],
 
-    /**
-     * Allow the user to select a custom layout for a page
-     */
-    'custom_layouts' => [
-        'enabled' => true,
-    ],
-
     'tags_navigation' => false,
-    'layouts_navigation' => false,
 
-    'default_layout' => [
+    'layout' => [
         'name' => 'layouts.app',
 
         /**

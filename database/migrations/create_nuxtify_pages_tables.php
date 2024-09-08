@@ -26,14 +26,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create("{$this->getPrefix()}layouts", function (Blueprint $table) {
-            $table->id();
-            $table->string('code', 50)->unique();
-            $table->json('metadata')->nullable();
-            $table->json('content');
-            $table->timestamps();
-        });
-
         Schema::create("{$this->getPrefix()}pages", function (Blueprint $table) {
             $table->id();
             $table->json('slug');
@@ -41,16 +33,10 @@ return new class extends Migration
             $table->json('description')->nullable();
             $table->json('content');
             $table->json('metadata')->nullable();
-            $table->unsignedBigInteger('layout_id')->nullable();
             $table->enum('status', array_column(PageStatus::cases(), 'value'))->default(PageStatus::DRAFT);
             $table->enum('visibility', array_column(PageVisibility::cases(), 'value'))->default(PageVisibility::PUBLIC);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
-
-            $table->foreign('layout_id')
-                ->references('id')
-                ->on("{$this->getPrefix()}layouts")
-                ->nullOnDelete();
         });
 
         Schema::create("{$this->getPrefix()}tags", function (Blueprint $table) {
@@ -116,6 +102,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists($this->getPrefix() . 'category_pages');
         Schema::dropIfExists($this->getPrefix() . 'related_categories');
         Schema::dropIfExists($this->getPrefix() . 'categories');
         Schema::dropIfExists($this->getPrefix() . 'taggables');
@@ -124,6 +111,5 @@ return new class extends Migration
         Schema::dropIfExists($this->getPrefix() . 'images');
         Schema::dropIfExists($this->getPrefix() . 'paragraphs');
         Schema::dropIfExists($this->getPrefix() . 'pages');
-        Schema::dropIfExists($this->getPrefix() . 'layouts');
     }
 };

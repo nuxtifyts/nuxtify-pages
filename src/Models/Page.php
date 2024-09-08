@@ -6,7 +6,7 @@ use Carbon\CarbonInterface;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Collection;
 use Nuxtifyts\NuxtifyPages\Concerns\Attributes\HasBlocksAttribute;
@@ -29,7 +29,6 @@ use Spatie\Translatable\HasTranslations;
  * @property ?PageMetaData $metadata
  * @property array $content
  * @property ?int $layout_id
- * @property ?Layout $layout
  * @property PageStatus $status
  * @property PageVisibility $visibility
  * @property ?CarbonInterface $published_at
@@ -77,14 +76,14 @@ class Page extends NuxtifyModel implements Htmlable
         ];
     }
 
-    public function layout(): BelongsTo
-    {
-        return $this->belongsTo(Layout::class);
-    }
-
     public function tags(): MorphToMany
     {
         return $this->morphToMany(Tag::class, name: 'taggable', table: Taggable::getModel()->getTable());
+    }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, table: CategoryPage::getModel()->getTable());
     }
 
     public function getSlugOptions(): SlugOptions

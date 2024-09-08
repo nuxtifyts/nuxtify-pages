@@ -31,6 +31,7 @@ return [
                 'visibility' => 'Visibility',
                 'published_at' => 'Published at',
                 'tags' => 'Tags',
+                'categories' => 'Categories',
                 'metadata' => [
                     'title' => 'Title',
                     'description' => 'Description',
@@ -41,7 +42,7 @@ return [
             'sections' => [
                 'page-information' => 'Page information',
                 'seo' => 'SEO',
-                'tags' => 'Tags',
+                'tags_and_categories' => 'Tags and categories',
                 'page-elements' => 'Page elements',
             ],
             'block-name' => [

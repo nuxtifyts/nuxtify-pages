@@ -22,13 +22,13 @@ class NuxtifyPagesServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasViewComponents(
                 'nuxtify-components',
+                Components\NuxtifyPage::class,
                 Components\Heading::class,
                 Components\Paragraph::class,
                 Components\Image::class,
                 Components\Slot::class,
             )
-            ->hasConfigFile()
-            ->hasRoutes('web', 'api');
+            ->hasConfigFile();
     }
 
     public function boot(): PackageServiceProvider
