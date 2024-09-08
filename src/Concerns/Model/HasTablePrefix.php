@@ -3,25 +3,27 @@
 namespace Nuxtifyts\NuxtifyPages\Concerns\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * @mixin Model
  */
 trait HasTablePrefix
 {
-    private ?string $prefix = null;
-
-    public function getTable(): ?string
+    public function getBaseTable(): string
     {
-        return $this->getTablePrefix() . parent::getTable();
+        return Str::snake(Str::pluralStudly(class_basename($this)));
+    }
+
+    public function getTable(): string
+    {
+        return $this->getTablePrefix() . $this->getBaseTable();
     }
 
     public function getTablePrefix(): string
     {
-        return $this->prefix ??= (
-            ($prefix = config('nuxtify-pages.database.prefix', ''))
+        return ($prefix = config('nuxtify-pages.database.prefix', ''))
             ? $prefix . '_'
-            : ''
-        );
+            : '';
     }
 }

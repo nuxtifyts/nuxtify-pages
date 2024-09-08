@@ -36,11 +36,13 @@ return [
     'web-routes' => [
         'enabled' => true,
         'prefix' => '/',
+        'additional-middleware' => [],
     ],
 
     'api-routes' => [
         'enabled' => true,
         'prefix' => '/api',
+        'additional-middleware' => [],
     ],
 
     'database' => [
@@ -51,4 +53,8 @@ return [
         'default_visibility' => 'private',
         'default_status' => 'draft',
     ],
+
+    'pagination' => [
+        'per_page' => 10,
+    ]
 ];

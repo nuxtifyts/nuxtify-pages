@@ -11,6 +11,10 @@ class VisibleScope implements Scope
 {
     public function apply(Builder $builder, Model $model): void
     {
+        if (!$model->hasAttribute('visibility')) {
+            return;
+        }
+
         $builder->where('visibility', PageVisibility::PUBLIC->value);
     }
 }

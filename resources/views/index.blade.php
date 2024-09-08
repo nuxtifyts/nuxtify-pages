@@ -1,17 +1,24 @@
 @php
+    use Illuminate\Database\Eloquent\Collection;
+    use Nuxtifyts\NuxtifyPages\Models\Layout;
     use Nuxtifyts\NuxtifyPages\Models\Page;
-    /** @var Page $page */
+
+    /** @var ?Layout $layout */
+    /** @var Collection<int, Page> $pages */
 @endphp
 
 @extends(
-    $page->layout_id
+    $layout
         ? 'nuxtify-pages::components.layout'
         : config('nuxtify-pages.default_layout.name')
 )
 
 @section(
-    $page->layout_id
+    $layout
         ? 'content'
-        : config('nuxtify-pages.default_layout.section-keys.content', 'content'),
-    $page
+        : config('nuxtify-pages.default_layout.section-keys.content', 'content')
 )
+    @foreach($pages as $page)
+        @include('nuxtify-pages::components.page-card', [ 'page' => $page ])
+    @endforeach
+@endsection

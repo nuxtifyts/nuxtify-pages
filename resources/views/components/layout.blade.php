@@ -1,9 +1,11 @@
 @php
     use Nuxtifyts\NuxtifyPages\Models\Page;
-    /** @var Page $page */
+    use Nuxtifyts\NuxtifyPages\Models\Layout;
+    /** @var ?Page $page */
+    /** @var ?Layout $layout */
 @endphp
 
-@foreach($page->layout->blocks as $block)
+@foreach($layout?->blocks ?? $page?->layout->blocks ?? [] as $block)
     <x-dynamic-component
         :component="$block->getComponentName()"
         :data="$block"

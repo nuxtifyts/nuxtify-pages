@@ -96,5 +96,8 @@ return [
             'pending' => 'Pending',
             'published' => 'Published',
         ]
+    ],
+    'actions' => [
+        'read' => 'Read',
     ]
 ];

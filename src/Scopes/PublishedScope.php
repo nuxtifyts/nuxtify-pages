@@ -11,6 +11,10 @@ class PublishedScope implements Scope
 {
     public function apply(Builder $builder, Model $model): void
     {
+        if (!$model->hasAttribute('status') || !$model->hasAttribute('published_at')) {
+            return;
+        }
+
         $builder
             ->where('status', PageStatus::PUBLISHED->value)
             ->where('published_at', '<=', now());
