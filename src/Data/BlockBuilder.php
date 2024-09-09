@@ -47,7 +47,6 @@ class BlockBuilder
                 height: $data['data']['height'] ?? null,
                 width: $data['data']['width'] ?? null,
             ),
-            Block::SLOT => new SlotBlockData(),
             default => null
         };
     }

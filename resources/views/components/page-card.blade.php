@@ -10,7 +10,9 @@
         {!! $page->content !!}
     </div>
 
-    <a href="{{ route('nuxtify-pages.show', [ 'slug' => $page->slug ]) }}">
-        {{ __('nuxtify-pages::nuxtify-pages.actions.read') }}
-    </a>
+    @if ($routeName = config('nuxtify-pages.routes.show'))
+        <a href="{{ route($routeName, [ 'slug' => $page->slug ]) }}">
+            {{ __('nuxtify-pages::nuxtify-pages.actions.read') }}
+        </a>
+    @endif
 </div>
