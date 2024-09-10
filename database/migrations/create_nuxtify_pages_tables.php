@@ -31,6 +31,7 @@ return new class extends Migration
             $table->json('slug');
             $table->json('title');
             $table->json('description')->nullable();
+            $table->json('cover_image')->nullable();
             $table->json('content');
             $table->json('metadata')->nullable();
             $table->enum('status', array_column(PageStatus::cases(), 'value'))->default(PageStatus::DRAFT);

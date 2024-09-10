@@ -33,6 +33,11 @@ class PageResource extends Resource
                         Forms\Components\Split::make([
                             Forms\Components\Section::make()
                                 ->schema([
+                                    Forms\Components\FileUpload::make('cover_image')
+                                        ->image()
+                                        ->required(config('nuxtify-pages.pages.cover_image_required'))
+                                        ->label(__('nuxtify-pages::nuxtify-pages.models.page.fields.cover_image'))
+                                        ->columnSpanFull(),
                                     Forms\Components\TextInput::make('slug')
                                         ->required()
                                         ->maxLength(60)

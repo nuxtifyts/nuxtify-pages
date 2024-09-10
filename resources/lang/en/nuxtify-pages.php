@@ -26,6 +26,7 @@ return [
                 'slug' => 'Slug',
                 'title' => 'Title',
                 'description' => 'Description',
+                'cover_image' => 'Cover image',
                 'layout_id' => 'Page layout',
                 'status' => 'Status',
                 'visibility' => 'Visibility',

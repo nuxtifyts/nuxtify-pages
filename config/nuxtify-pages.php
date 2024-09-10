@@ -37,5 +37,6 @@ return [
     'pages' => [
         'default_visibility' => 'private',
         'default_status' => 'draft',
+        'cover_image_required' => false,
     ],
 ];

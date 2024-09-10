@@ -49,6 +49,7 @@ class Page extends NuxtifyModel implements Htmlable
         'slug',
         'title',
         'description',
+        'cover_image',
         'content',
         'metadata',
         'content',
