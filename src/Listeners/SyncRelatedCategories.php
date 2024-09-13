@@ -61,11 +61,11 @@ class SyncRelatedCategories implements ShouldQueue
                 ? DB::select("
                        WITH RECURSIVE cte (id, parent_id) AS (
                            SELECT c1.id, c1.parent_id
-                           FROM categories AS c1
+                           FROM {$this->getTablePrefix()}categories AS c1
                            WHERE c1.id = $category->id
                            UNION ALL
                            SELECT c2.id, c2.parent_id
-                           FROM categories AS c2
+                           FROM {$this->getTablePrefix()}categories AS c2
                                INNER JOIN cte
                                    ON c2.id = cte.parent_id
                        )
@@ -87,12 +87,12 @@ class SyncRelatedCategories implements ShouldQueue
                 ? DB::select("
                         WITH RECURSIVE cte (id, parent_id) AS (
                             SELECT c1.id, c1.parent_id
-                            FROM categories AS c1
+                            FROM {$this->getTablePrefix()}categories AS c1
                             WHERE c1.parent_id = $category->parent_id
                             AND c1.id <> $category->id
                             UNION ALL
                             SELECT c2.id, c2.parent_id
-                            FROM categories c2
+                            FROM {$this->getTablePrefix()}categories AS c2
                                 INNER JOIN cte
                                     ON c2.parent_id = cte.id
                         )
@@ -111,16 +111,23 @@ class SyncRelatedCategories implements ShouldQueue
         return collect(DB::select("
             WITH RECURSIVE cte (id, parent_id) AS (
                 SELECT c1.id, c1.parent_id
-                FROM categories AS c1
+                FROM {$this->getTablePrefix()}categories AS c1
                 WHERE c1.parent_id = $category->id
                 UNION ALL
                 SELECT c2.id, c2.parent_id
-                FROM categories c2
+                FROM {$this->getTablePrefix()}categories AS c2
                     INNER JOIN cte
                         ON c2.parent_id = cte.id
             )
             SELECT id
             FROM cte
         "))->pluck('id');
+    }
+
+    private function getTablePrefix(): string
+    {
+        return ($prefix = config('nuxtify-pages.database.prefix', ''))
+            ? $prefix . '_'
+            : '';
     }
 }
