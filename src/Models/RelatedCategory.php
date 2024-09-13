@@ -34,7 +34,7 @@ class RelatedCategory extends NuxtifyModel
         ];
     }
 
-    public function getBaseTable(): ?string
+    public function getBaseTable(): string
     {
         return 'related_categories';
     }
