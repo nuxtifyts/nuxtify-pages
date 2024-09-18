@@ -2,6 +2,8 @@
     use Nuxtifyts\NuxtifyPages\Data\ParagraphBlockData;
     /** @var ParagraphBlockData $data */
 
+    $scriptStack = config('nuxtify-pages.layout.stacks.scripts', 'scripts');
+
     $strongClasses = [
         '[&_strong]:text-bold'
     ];
@@ -79,7 +81,7 @@
     {!! $data->content !!}
 </div>
 
-@pushonce(config('nuxtify-pages.layout.stacks.scripts', 'scripts'))
+@pushonce($scriptStack)
     <script>
         document.addEventListener(
             'DOMContentLoaded',
@@ -87,7 +89,7 @@
                 .querySelectorAll('span[style="text-decoration: underline;"]')
                 .forEach((element) => {
                     element.style.textDecoration = '';
-                    element.classList.add('underlined-text');
+                    element.classList.add('underlined-text')
                 })
         );
     </script>

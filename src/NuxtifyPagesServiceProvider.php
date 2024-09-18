@@ -26,7 +26,6 @@ class NuxtifyPagesServiceProvider extends PackageServiceProvider
                 Components\Heading::class,
                 Components\Paragraph::class,
                 Components\Image::class,
-                Components\Slot::class,
             )
             ->hasConfigFile();
     }

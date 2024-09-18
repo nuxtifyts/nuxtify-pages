@@ -21,6 +21,7 @@ return [
                 'author',
                 'keywords',
             ],
+            'page-title',
             'content',
         ],
         'stacks' => [
