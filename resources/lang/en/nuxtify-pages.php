@@ -5,7 +5,7 @@ return [
         'tag' => [
             'fields' => [
                 'name' => 'Name',
-            ]
+            ],
         ],
         'category' => [
             'fields' => [
@@ -14,7 +14,7 @@ return [
                 'metadata' => 'Additional data',
                 'description' => 'Description',
                 'related_categories' => 'Related categories',
-            ]
+            ],
         ],
         'related-category' => [
             'fields' => [
@@ -38,7 +38,7 @@ return [
                     'description' => 'Description',
                     'keywords' => 'Keywords',
                     'author' => 'Author',
-                ]
+                ],
             ],
             'sections' => [
                 'page-information' => 'Page information',
@@ -70,8 +70,8 @@ return [
                     'alt' => 'Alt text',
                     'width' => 'Width',
                     'height' => 'Height',
-                ]
-            ]
+                ],
+            ],
         ],
         'layout' => [
             'fields' => [
@@ -79,7 +79,7 @@ return [
             ],
             'block-name' => [
                 'slot' => 'Page content',
-            ]
+            ],
         ]
     ],
     'enums' => [
@@ -97,9 +97,12 @@ return [
             'archived' => 'Archived',
             'pending' => 'Pending',
             'published' => 'Published',
-        ]
+        ],
+    ],
+    'resources' => [
+        'group-name' => 'Nuxtify Pages',
     ],
     'actions' => [
         'read' => 'Read',
-    ]
+    ],
 ];

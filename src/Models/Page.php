@@ -34,6 +34,7 @@ use Spatie\Translatable\HasTranslations;
  * @property ?CarbonInterface $published_at
  * @property ?CarbonInterface $created_at
  * @property ?CarbonInterface $updated_at
+ * @property-read EloquentCollection $categories
  * @property-read EloquentCollection $components
  * @property-read EloquentCollection $tags
  * @property-read ?Collection<int, BlockData> $blocks

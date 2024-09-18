@@ -23,12 +23,18 @@ return [
             ],
             'content',
         ],
+        'stacks' => [
+            'scripts',
+            'styles',
+        ],
     ],
 
     'routes' => [
         'index' => '',
         'show' => '',
     ],
+
+    'resources-group' => 'nuxtify-pages',
 
     'database' => [
         'prefix' => 'nuxtify_pages',

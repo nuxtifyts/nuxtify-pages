@@ -94,4 +94,14 @@ class CategoryResource extends Resource
             'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return config('nuxtify-pages.resources-group');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('nuxtify-pages::nuxtify-pages.resources.group-name');
+    }
 }
