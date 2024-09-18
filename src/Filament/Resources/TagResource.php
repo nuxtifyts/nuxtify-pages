@@ -70,12 +70,7 @@ class TagResource extends Resource
         return config('nuxtify-pages.tags_navigation');
     }
 
-    public static function getNavigationGroup(): ?string
-    {
-        return config('nuxtify-pages.resources-group');
-    }
-
-    public static function getNavigationLabel(): string
+    public static function getNavigationGroup(): string
     {
         return __('nuxtify-pages::nuxtify-pages.resources.group-name');
     }

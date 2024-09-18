@@ -34,8 +34,6 @@ return [
         'show' => '',
     ],
 
-    'resources-group' => 'nuxtify-pages',
-
     'database' => [
         'prefix' => 'nuxtify_pages',
     ],
