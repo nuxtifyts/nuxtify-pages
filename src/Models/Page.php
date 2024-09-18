@@ -3,7 +3,6 @@
 namespace Nuxtifyts\NuxtifyPages\Models;
 
 use Carbon\CarbonInterface;
-use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -40,7 +39,7 @@ use Spatie\Translatable\HasTranslations;
  * @property-read ?Collection<int, BlockData> $blocks
  */
 #[ScopedBy([VisibleScope::class, PublishedScope::class])]
-class Page extends NuxtifyModel implements Htmlable
+class Page extends NuxtifyModel
 {
     use HasTranslations;
     use HasTranslatableSlug;
@@ -93,12 +92,5 @@ class Page extends NuxtifyModel implements Htmlable
         return SlugOptions::create()
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
-    }
-
-    public function toHtml(): string
-    {
-        return view('nuxtify-pages::components.page')
-            ->with('page', $this)
-            ->render();
     }
 }

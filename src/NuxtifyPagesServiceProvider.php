@@ -22,7 +22,6 @@ class NuxtifyPagesServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasViewComponents(
                 'nuxtify-components',
-                Components\NuxtifyPage::class,
                 Components\Heading::class,
                 Components\Paragraph::class,
                 Components\Image::class,
