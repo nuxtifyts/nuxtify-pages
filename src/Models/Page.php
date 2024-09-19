@@ -63,7 +63,8 @@ class Page extends NuxtifyModel
         'slug',
         'title',
         'content',
-        'description'
+        'description',
+        'cover_image',
     ];
 
     protected function casts(): array
